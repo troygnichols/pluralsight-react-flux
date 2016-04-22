@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
@@ -8,6 +9,7 @@
     }
   },
   "env": {
+    "es6": true,
     "browser": true,
     "node": true,
     "jquery": true
@@ -104,7 +106,7 @@
     "no-undef":                   [1],
     "no-undef-init":              [0],
     "no-undefined":               [1],
-    "no-unused-vars":             [1],
+    "no-unused-vars":             [0],
     "no-use-before-define":       [0],
 
 
@@ -175,5 +177,8 @@
   "globals": {
     "jQuery": true,
     "$": true
-  }
+  },
+  "plugins": [
+    "react"
+  ]
 }
