@@ -4,10 +4,10 @@ var gulp       = require('gulp');
 var connect    = require('gulp-connect');
 var open       = require('gulp-open');
 var browserify = require('browserify');
-var reactify   = require('reactify');
+var babelify   = require('babelify');
 var source     = require('vinyl-source-stream');
 var concat     = require('gulp-concat');
-var eslint       = require('gulp-eslint');
+var eslint     = require('gulp-eslint');
 
 var config = {
   port: 9005,
@@ -50,7 +50,9 @@ gulp.task('html', function() {
 
 gulp.task('js', function() {
   browserify(config.paths.mainJs)
-    .transform(reactify)
+    .transform('babelify', {
+      presets: ['es2015', 'react']
+    })
     .bundle() // put it all into one file
     .on('error', console.error.bind(console))
     .pipe(source('bundle.js'))
