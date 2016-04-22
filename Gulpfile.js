@@ -14,12 +14,16 @@ var config = {
   devBaseUrl: 'http://localhost',
   paths: {
     html: './src/*.html',
-    js:   './src/**/*.js',
+    js:   [
+      './src/**/*.js',
+      'node_modules/bootstrap/js/**/*.js'
+    ],
     mainJs: './src/main.js',
     css: [
       'node_modules/bootstrap/dist/css/bootstrap.min.css',
       'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'
     ],
+    images: './src/images/**/*',
     dist: './dist'
   }
 };
@@ -74,9 +78,19 @@ gulp.task('eslint', function() {
     .pipe(eslint.format());
 });
 
+gulp.task('images', function() {
+  gulp.src(config.paths.images)
+    .pipe(gulp.dest(config.paths.dist + '/images'))
+    .pipe(connect.reload());
+
+  gulp.src('./src/favicon.ico')
+    .pipe(gulp.dest(config.paths.dist));
+});
+
 gulp.task('watch', function() {
   gulp.watch(config.paths.html, ['html']);
   gulp.watch(config.paths.js, ['js', 'eslint']);
+  gulp.watch(config.paths.images, ['images']);
 });
 
-gulp.task('default', ['html', 'js', 'css', 'eslint', 'open', 'watch']);
+gulp.task('default', ['html', 'js', 'css', 'images', 'eslint', 'open', 'watch']);
