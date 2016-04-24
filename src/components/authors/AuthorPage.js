@@ -1,5 +1,6 @@
-import React from 'react';
+import { React, Proptypes } from 'react';
 import AuthorApi from '../../api/authorApi';
+import AuthorList from './AuthorList';
 
 const Authors = React.createClass({
   getInitialState() {
@@ -8,39 +9,23 @@ const Authors = React.createClass({
     }
   },
 
-  componentWillMount() {
-    this.setState({
-      authors: AuthorApi.getAllAuthors()
-    });
+  componentDidMount() {
+    if (this.isMounted) {
+      this.setState({
+        authors: AuthorApi.getAllAuthors()
+      });
+    } else {
+      console.log.debug('Component was not mounted, skipping state setup');
+    }
   },
 
   render() {
-    const createAuthorRow = function(author) {
-      return (
-        <tr key={author.id}>
-          <td><a href={`/#authors/${author.id}`}>{author.id}</a></td>
-          <td>{author.firstName} {author.lastName}</td>
-        </tr>
-      );
-    };
-
     return (
       <div>
         <h1>Authors</h1>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.authors.map(createAuthorRow)}
-          </tbody>
-        </table>
+        <AuthorList authors={this.state.authors} />
       </div>
     );
-
   }
 });
 
