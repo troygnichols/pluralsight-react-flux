@@ -6,6 +6,7 @@ import React from 'react';
 import Home from './components/HomePage';
 import About from './components/about/AboutPage';
 import Header from './components/common/Header';
+import Authors from './components/authors/AuthorPage';
 
 const App = React.createClass({
   render() {
@@ -13,6 +14,9 @@ const App = React.createClass({
     switch(this.props.route) {
       case 'about':
         Child = About;
+        break;
+      case 'authors':
+        Child = Authors
         break;
       default:
         Child = Home;
