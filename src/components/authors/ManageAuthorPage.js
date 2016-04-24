@@ -2,6 +2,7 @@ import React from 'react';
 import Router from 'react-router';
 import AuthorForm from './AuthorForm';
 import AuthorApi from '../../api/AuthorApi';
+import toastr from 'toastr';
 
 const ManageAuthorPage = React.createClass({
   mixins: [
@@ -31,6 +32,7 @@ const ManageAuthorPage = React.createClass({
   saveAuthor(event) {
     event.preventDefault();
     AuthorApi.saveAuthor(this.state.author);
+    toastr.success('Author saved');
     this.transitionTo('authors');
   },
 
