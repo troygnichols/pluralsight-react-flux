@@ -1,5 +1,6 @@
 import React from 'react';
 import Router, { DefaultRoute, NotFoundRoute, Redirect, Route }  from 'react-router';
+
 import App from './components/app';
 import HomePage from './components/HomePage';
 import AuthorsPage from './components/authors/AuthorsPage';
@@ -12,6 +13,7 @@ const Routes =
     <DefaultRoute handler={HomePage}/>
     <Route name="authors" handler={AuthorsPage}/>
     <Route name="addAuthor" path="author" handler={ManageAuthorPage}/>
+    <Route name="editAuthor" path="author/:id" handler={ManageAuthorPage}/>
     <Route name="about" path="about-us" handler={AboutPage}/>
     <NotFoundRoute handler={NotFoundPage}/>
     <Redirect from="about" to="about"/>

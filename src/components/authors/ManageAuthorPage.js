@@ -31,6 +31,17 @@ const ManageAuthorPage = React.createClass({
     };
   },
 
+  componentWillMount() {
+    // calling setState from ..WillMount will not
+    // cause a re-render, unlike ..DidMount
+    let authorId = this.props.params.id;
+    if (authorId) {
+      this.setState({
+        author: AuthorApi.getAuthorById(authorId)
+      });
+    }
+  },
+
   setAuthorState(event) {
     this.setState({
       isDirty: true
@@ -66,6 +77,9 @@ const ManageAuthorPage = React.createClass({
       return;
     }
     AuthorApi.saveAuthor(this.state.author);
+    this.setState({
+      isDirty: false
+    });
     toastr.success('Author saved');
     this.transitionTo('authors');
   },

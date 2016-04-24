@@ -15,7 +15,7 @@ const AuthorApi = {
   },
 
   getAuthorById(id) {
-    let author = _.find(authors, {id});
+    return _.find(authors, {id});
   },
 
   saveAuthor(author) {

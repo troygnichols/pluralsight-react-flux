@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 const AuthorList = React.createClass({
   propTypes: {
@@ -9,7 +10,7 @@ const AuthorList = React.createClass({
     const createAuthorRow = function(author) {
       return (
         <tr key={author.id}>
-          <td><a href={`/#authors/${author.id}`}>{author.id}</a></td>
+          <td><Link to="editAuthor" params={{id: author.id}}>{author.id}</Link></td>
           <td>{author.firstName} {author.lastName}</td>
         </tr>
       );
