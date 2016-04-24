@@ -14,10 +14,10 @@ const Header = React.createClass({
               <Link to="app">Home</Link>
             </li>
             <li>
-              <Link to="authors">AuthorsPage</Link>
+              <Link to="authors">Authors</Link>
             </li>
             <li>
-              <Link to="about">AboutPage</Link>
+              <Link to="about">About</Link>
             </li>
           </ul>
         </div>

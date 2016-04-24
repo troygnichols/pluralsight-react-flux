@@ -18,7 +18,7 @@ const Home = React.createClass({
           <li>Bootstrap</li>
         </ul>
       </div>
-    )
+    );
   }
 });
 
