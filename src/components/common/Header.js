@@ -1,22 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Header = React.createClass({
   render() {
     return (
       <nav className="navbar navbar-default">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <Link to="app" className="navbar-brand" href="/">
             <img width="100px;" src="images/pluralsight-logo.png" alt="Pluralsight Logo"/>
-          </a>
+          </Link>
           <ul className="nav navbar-nav">
             <li>
-              <a href="/#">Home</a>
+              <Link to="app">Home</Link>
             </li>
             <li>
-              <a href="/#authors">AuthorsPage</a>
+              <Link to="authors">AuthorsPage</Link>
             </li>
             <li>
-              <a href="/#about">AboutPage</a>
+              <Link to="about">AboutPage</Link>
             </li>
           </ul>
         </div>
