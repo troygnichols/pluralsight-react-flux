@@ -93,4 +93,12 @@ gulp.task('watch', function() {
   gulp.watch(config.paths.images, ['images']);
 });
 
-gulp.task('default', ['html', 'js', 'css', 'images', 'eslint', 'watch']);
+gulp.task('default', [
+  'html',
+  'js',
+  'css',
+  'images',
+  'eslint',
+  'watch',
+  'connect'
+]);
