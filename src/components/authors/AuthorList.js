@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const AuthorList = React.createClass({
+  propTypes: {
+    authors: PropTypes.array.isRequired
+  },
+
   render() {
     const createAuthorRow = function(author) {
       return (

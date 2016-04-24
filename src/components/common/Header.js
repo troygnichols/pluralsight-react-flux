@@ -13,10 +13,10 @@ const Header = React.createClass({
               <a href="/#">Home</a>
             </li>
             <li>
-              <a href="/#authors">Authors</a>
+              <a href="/#authors">AuthorsPage</a>
             </li>
             <li>
-              <a href="/#about">About</a>
+              <a href="/#about">AboutPage</a>
             </li>
           </ul>
         </div>

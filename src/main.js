@@ -6,7 +6,7 @@ import React from 'react';
 import Home from './components/HomePage';
 import About from './components/about/AboutPage';
 import Header from './components/common/Header';
-import Authors from './components/authors/AuthorPage';
+import Authors from './components/authors/AuthorsPage';
 
 const App = React.createClass({
   render() {

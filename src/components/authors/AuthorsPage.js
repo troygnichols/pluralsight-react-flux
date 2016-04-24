@@ -1,8 +1,8 @@
-import { React, Proptypes } from 'react';
+import React from 'react';
 import AuthorApi from '../../api/authorApi';
 import AuthorList from './AuthorList';
 
-const Authors = React.createClass({
+const AuthorsPage = React.createClass({
   getInitialState() {
     return {
       authors: []
@@ -29,4 +29,4 @@ const Authors = React.createClass({
   }
 });
 
-export default Authors;
+export default AuthorsPage;
