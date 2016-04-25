@@ -1,7 +1,8 @@
 import React from 'react';
 import Router from 'react-router';
 import AuthorForm from './AuthorForm';
-import AuthorApi from '../../api/AuthorApi';
+import AuthorStore from '../../stores/AuthorStore';
+import AuthorActions from '../../actions/AuthorActions';
 import toastr from 'toastr';
 
 const ManageAuthorPage = React.createClass({
@@ -37,7 +38,7 @@ const ManageAuthorPage = React.createClass({
     let authorId = this.props.params.id;
     if (authorId) {
       this.setState({
-        author: AuthorApi.getAuthorById(authorId)
+        author: AuthorStore.getAuthorById(authorId)
       });
     }
   },
@@ -76,7 +77,7 @@ const ManageAuthorPage = React.createClass({
     if (!this.isAuthorFormValid()) {
       return;
     }
-    AuthorApi.saveAuthor(this.state.author);
+    AuthorActions.createAuthor(this.state.author);
     this.setState({
       isDirty: false
     });

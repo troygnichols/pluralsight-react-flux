@@ -1,23 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router';
-import AuthorApi from '../../api/authorApi';
 import AuthorList from './AuthorList';
+import AuthorStore from '../../stores/AuthorStore';
+import AuthorActions from '../../actions/AuthorActions';
 
 const AuthorsPage = React.createClass({
   getInitialState() {
     return {
-      authors: []
+      authors: AuthorStore.getAllAuthors()
     };
-  },
-
-  componentDidMount() {
-    if (this.isMounted) {
-      this.setState({
-        authors: AuthorApi.getAllAuthors()
-      });
-    } else {
-      console.log.debug('Component was not mounted, skipping state setup');
-    }
   },
 
   render() {
