@@ -50,6 +50,13 @@ Dispatcher.register(function(action) {
       AuthorStore.emitChange();
       break;
 
+    case ActionTypes.DELETE_AUTHOR:
+      _.remove(authors, function(author) {
+        return action.id === author.id;
+      });
+      AuthorStore.emitChange();
+      break;
+
     default:
       console.log("No idea ¯\\_(ツ)_/¯");
   }

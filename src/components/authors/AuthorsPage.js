@@ -11,6 +11,21 @@ const AuthorsPage = React.createClass({
     };
   },
 
+  componentWillMount() {
+    AuthorStore.addChangeListener(this._onChange);
+  },
+
+  componentWillUnMount() {
+    AuthorStore.removeChangeListener(this._onChange);
+  },
+
+  // runs any time the store's state changes
+  _onChange() {
+    this.setState({
+      authors: AuthorStore.getAllAuthors()
+    });
+  },
+
   render() {
     return (
       <div>
