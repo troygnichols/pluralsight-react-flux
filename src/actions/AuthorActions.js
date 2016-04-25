@@ -1,14 +1,23 @@
 import Dispatcher from '../dispatcher/AppDispatcher';
 import AuthorApi from '../api/AuthorApi';
-import { CREATE_AUTHOR } from '../constants/ActionTypes';
+import ActionTypes from '../constants/ActionTypes';
 
 const AuthorActions = {
   createAuthor(author) {
-    let newAuthor = AuthorApi.saveAuthor(author);
+    const newAuthor = AuthorApi.saveAuthor(author);
 
     Dispatcher.dispatch({
-      actionType: CREATE_AUTHOR,
+      actionType: ActionTypes.CREATE_AUTHOR,
       author:     newAuthor
+    });
+  },
+
+  updateAuthor(author) {
+    const updatedAuthor = AuthorApi.saveAuthor(author);
+
+    Dispatcher.dispatch({
+      actionType: ActionTypes.UPDATE_AUTHOR,
+      author:     updatedAuthor
     });
   }
 };

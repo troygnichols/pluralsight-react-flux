@@ -1,5 +1,5 @@
 import Dispatcher from '../dispatcher/AppDispatcher';
-import { CREATE_AUTHOR } from '../constants/ActionTypes';
+import ActionTypes from '../constants/ActionTypes';
 import { EventEmitter } from 'events';
 import assign from 'object-assign';
 import _ from 'lodash';
@@ -32,12 +32,26 @@ const AuthorStore = assign({}, EventEmitter.prototype, {
 
 Dispatcher.register(function(action) {
   switch(action.actionType) {
-    case CREATE_AUTHOR:
+
+    case ActionTypes.INITIALIZE:
+      Array.prototype.push.apply(authors, action.initialData.authors);
+      AuthorStore.emitChange();
+      break;
+
+    case ActionTypes.CREATE_AUTHOR:
       authors.push(action.author);
       AuthorStore.emitChange();
       break;
+
+    case ActionTypes.UPDATE_AUTHOR:
+      const existingAuthor = _.find(authors, { id: action.author.id });
+      const index = _.indexOf(authors, existingAuthor);
+      authors.splice(index, 1, action.author);
+      AuthorStore.emitChange();
+      break;
+
     default:
-      console.log("¯\\_(ツ)_/¯");
+      console.log("No idea ¯\\_(ツ)_/¯");
   }
 });
 
